@@ -5,8 +5,8 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "SLink - Encurtador de URL",
-  description: "SLink - Encurtador de URL",
+  title: "SFurl - Encurtador de URL",
+  description: "SFurl - Encurtador de URL",
 };
 
 export default function RootLayout({
