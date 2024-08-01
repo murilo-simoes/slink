@@ -5,27 +5,16 @@ import 'react-toastify/dist/ReactToastify.css';
 import styles from "./page.module.css";
 import { api, isValidLink } from "@/api/api";
 import { useRouter } from 'next/navigation'
-import { useSearchParams } from "next/navigation";
-import { Suspense } from 'react'
 
 export default function Home() {
 
   const [link, setLink] = useState("")
   const [newLink, setNewLink] = useState("")
   const [mostrarLink, setMostrarLink] = useState(false);
-  const searchParams = useSearchParams();
-  const router = useRouter()
+  
 
   const notify = (text:string) => toast.error(text);
   const notifyS = (text:string) => toast.success(text);
- 
-  const id = searchParams.get('id');
-
-  useEffect(() => {
-      if (id) {
-          alert("Tem id!")
-      }
-  }, [id, router]);
 
   const encurtarUrl = async (event: React.FormEvent<HTMLFormElement>) =>{
     event.preventDefault()
@@ -55,7 +44,6 @@ export default function Home() {
 
   return (
     <>
-    <Suspense>
       <main className={styles.main}>
         {mostrarLink 
         ? 
@@ -74,7 +62,6 @@ export default function Home() {
         </form>
         }
       </main>
-    </Suspense>
     <ToastContainer theme="dark"/>
     </>
   );
