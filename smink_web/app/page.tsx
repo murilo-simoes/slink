@@ -48,7 +48,7 @@ export default function Home() {
         {mostrarLink 
         ? 
         <div className={styles.wrapper}>
-          <h1 className={styles.title}><b className={styles.smink}>SLink</b> - Encurtador de URL</h1>
+          <h1 className={styles.title}><b className={styles.smink}>SFurl</b> - Encurtador de URL</h1>
             <div className={styles.divUrl}>
               <h4 style={{"whiteSpace":"nowrap", "textOverflow":"ellipsis", "color":"#502e95"}}>{newLink}</h4>
             </div>
