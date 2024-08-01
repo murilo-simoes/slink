@@ -24,7 +24,7 @@ export default function Home() {
       })
 
       if(response.status === 200){
-        setNewLink(response.data.id);
+        setNewLink("https://sfurl.vercel.app/" + response.data.id);
         setMostrarLink(true);
         return 
       }else{
@@ -56,7 +56,7 @@ export default function Home() {
         </div>
         :
         <form onSubmit={encurtarUrl} className={styles.wrapper}>
-          <h1 className={styles.title}><b className={styles.smink}>SLink</b> - Encurtador de URL</h1>
+          <h1 className={styles.title}><b className={styles.smink}>SFurl</b> - Encurtador de URL</h1>
           <input onChange={(e) => setLink(e.target.value)} className={styles.inputUrl} type="text" placeholder="Cole o link aqui"></input>
           <button className={styles.button}>Encurtar URL</button>
         </form>
