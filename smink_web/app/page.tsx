@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 import { api, isValidLink } from "@/api/api";
 import { useRouter } from 'next/navigation'
 import { useSearchParams } from "next/navigation";
+import { Suspense } from 'react'
 
 export default function Home() {
 
@@ -54,24 +55,26 @@ export default function Home() {
 
   return (
     <>
-    <main className={styles.main}>
-      {mostrarLink 
-      ? 
-      <div className={styles.wrapper}>
-         <h1 className={styles.title}><b className={styles.smink}>SLink</b> - Encurtador de URL</h1>
-          <div className={styles.divUrl}>
-            <h4 style={{"whiteSpace":"nowrap", "textOverflow":"ellipsis", "color":"#502e95"}}>{newLink}</h4>
-          </div>
-            <button className={styles.button} onClick={() => copyText()}>Copiar URl encurtada</button>
-      </div>
-      :
-      <form onSubmit={encurtarUrl} className={styles.wrapper}>
-        <h1 className={styles.title}><b className={styles.smink}>SLink</b> - Encurtador de URL</h1>
-        <input onChange={(e) => setLink(e.target.value)} className={styles.inputUrl} type="text" placeholder="Cole o link aqui"></input>
-        <button className={styles.button}>Encurtar URL</button>
-      </form>
-      }
-    </main>
+    <Suspense>
+      <main className={styles.main}>
+        {mostrarLink 
+        ? 
+        <div className={styles.wrapper}>
+          <h1 className={styles.title}><b className={styles.smink}>SLink</b> - Encurtador de URL</h1>
+            <div className={styles.divUrl}>
+              <h4 style={{"whiteSpace":"nowrap", "textOverflow":"ellipsis", "color":"#502e95"}}>{newLink}</h4>
+            </div>
+              <button className={styles.button} onClick={() => copyText()}>Copiar URl encurtada</button>
+        </div>
+        :
+        <form onSubmit={encurtarUrl} className={styles.wrapper}>
+          <h1 className={styles.title}><b className={styles.smink}>SLink</b> - Encurtador de URL</h1>
+          <input onChange={(e) => setLink(e.target.value)} className={styles.inputUrl} type="text" placeholder="Cole o link aqui"></input>
+          <button className={styles.button}>Encurtar URL</button>
+        </form>
+        }
+      </main>
+    </Suspense>
     <ToastContainer theme="dark"/>
     </>
   );
